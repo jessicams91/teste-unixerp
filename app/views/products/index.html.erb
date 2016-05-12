@@ -7,25 +7,15 @@
     <th>Size</th>
     <th>Quantity</th>
   </tr>
-  <% for product in @products %>
+  <% for size in @sizes %>
   <tr>
-    <td><%= link_to product.name, product %></td>
-    <td><%= product.description %></td>
-    <ol class="colors">
-    <% product.colors.each do |color| %>
-      <li>
-        <td><%= color.name %></td>
-        <ol class="sizes">
-          <% color.sizes.each do |size| %>
-            <td><%= size.name %></td>
-            <td><%= size.quantity %></td>
-          <% end %>
-        </ol>
-      </li>
+      <td><%= link_to size.color.product.name, size.color.product %></td>
+      <td><%= size.color.product.description %></td>
+      <td><%= size.color.name %></td>
+      <td><%= size.name %></td>
+      <td><%= size.quantity %></td>
     <% end %>
-    </ol>
   </tr>
-  <% end %>
 </table>
 
 <p><%= link_to "New Product", new_product_path %></p>

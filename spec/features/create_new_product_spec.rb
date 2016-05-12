@@ -1,13 +1,7 @@
 require 'rails_helper'
 
-describe 'User creates new order', js: true do
+describe 'create new product', js: true do
   self.use_transactional_fixtures = false
-
-  # after(:each) do
-  #   User.delete(User.all) if User.last
-  #   Customer.delete(Customer.all) if Customer.last
-  #   Order.delete(Order.all) if Order.last
-  # end
 
   scenario 'with one color and size' do
     size = build(:size)
@@ -31,5 +25,13 @@ describe 'User creates new order', js: true do
     expect(page).to have_content color.name
     expect(page).to have_content size.name
     expect(page).to have_content size.quantity
+  end
+
+  scenario 'but fails on blank' do
+    visit new_product_path
+    click_on 'Criar Product'
+
+    expect(page).to have_content "Name não pode ficar em branco"
+    expect(page).to have_content "Description não pode ficar em branco"
   end
 end
