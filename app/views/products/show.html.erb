@@ -1,17 +1,20 @@
 <h1><%= @product.name %></h1>
 
-<ol class="colors">
-<% @product.colors.each do |color| %>
-  <li>
-    Color: <%= color.name %>
-    <ol class="sizes">
-      <% color.sizes.each do |size| %>
-        <li>Size: <%= size.name %></li>
-      <% end %>
-    </ol>
-  </li>
-<% end %>
-</ol>
+<strong>
+  <p>Description: <%= @product.description %></p>
+
+  <td class="colors">
+  <p><% @product.colors.each do |color| %></p>
+      Color: <%= color.name %>
+      <p class="sizes">
+        <% color.sizes.each do |size| %>
+          <p>Size: <%= size.name %></p>
+          <p>Quantity: <%= size.quantity %></p>
+        <% end %>
+      </p>
+  <% end %>
+  </td>
+</strong>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back to Products', products_path %>

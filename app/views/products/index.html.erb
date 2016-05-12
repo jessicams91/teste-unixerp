@@ -5,6 +5,7 @@
     <th>Description</th>
     <th>Color</th>
     <th>Size</th>
+    <th>Quantity</th>
   </tr>
   <% for product in @products %>
   <tr>
@@ -17,6 +18,7 @@
         <ol class="sizes">
           <% color.sizes.each do |size| %>
             <td><%= size.name %></td>
+            <td><%= size.quantity %></td>
           <% end %>
         </ol>
       </li>
