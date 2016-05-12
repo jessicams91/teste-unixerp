@@ -1,0 +1,9 @@
+<fieldset>
+  <%= f.input :name, label: "Color" %>
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Remove Color" %>
+  <%= f.fields_for :sizes do |builder| %>
+    <%= render 'size_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Size", f, :sizes %>
+</fieldset>

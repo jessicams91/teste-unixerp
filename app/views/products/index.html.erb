@@ -1,0 +1,29 @@
+<h1>Products</h1>
+<table class="pretty">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Color</th>
+    <th>Size</th>
+  </tr>
+  <% for product in @products %>
+  <tr>
+    <td><%= link_to product.name, product %></td>
+    <td><%= product.description %></td>
+    <ol class="colors">
+    <% product.colors.each do |color| %>
+      <li>
+        <td><%= color.name %></td>
+        <ol class="sizes">
+          <% color.sizes.each do |size| %>
+            <td><%= size.name %></td>
+          <% end %>
+        </ol>
+      </li>
+    <% end %>
+    </ol>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Product", new_product_path %></p>

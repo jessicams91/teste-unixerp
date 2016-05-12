@@ -1,0 +1,28 @@
+<%= simple_form_for @product do |f| %>
+  <% if @product.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :name %>
+  </div>
+  <div class="field">
+    <%= f.input :description, as: :text  %>
+  </div>
+
+  <%= f.fields_for :colors do |builder| %>
+    <%= render 'color_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Color", f, :colors %>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
